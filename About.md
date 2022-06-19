@@ -4,7 +4,8 @@
              Contextual Data based on Key field, 
              Header table , 
              Detail table, 
-             Relationship ( 1:1 , 1:*, *:*)
+             Relationship ( 1:1 , 1:m , m:m, m:1)
+             Cross Filter direction : Single/Both? --> Performance
 
   * ELT -- Extraction, Loading then Transformation ( using M-Code and DAX)
   
@@ -28,6 +29,13 @@
             Filter
             Time Intelligence
 
+          
+# Before Framing DAX Query
+
+  * While creating a Measure, Understand where you create DAX on top of which table?
+  * DAX Query works only with the table Related in the model, otherwise explicitly need to use RELATED() and ALLCROSSFILTERED
+    for Example, consider the DAX --> ExAverageA = AVERAGEA('Product'[ProductKey])  
+      * This works only when created a measure on SalesDetails table to filter with all other table fields.
    
 # Data Modelling for Sales Example
  * Understand Power BI Data Model 1:* along with DAX Basics
@@ -51,7 +59,7 @@ Other Tables --> Date and Customer
 	* Example:
 	Exsum = sum(SalesDetail[Quantity]) // also be used in  AVG, Max, Min, Count
 
-* A - Aggregate Function 
+* A - Aggregate Function (works similar as Average = AverageA)
     works in AverageA, CountA, MaxA, MinA
     
     handles non-numeric data types according to the following rules:
@@ -62,5 +70,17 @@ Other Tables --> Date and Customer
 
   * Syntax : [Measure Name] := AverageX(TableName[Field Name])
 
-  * Example : ExAverageA = AVERAGEA('Product'[ProductKey]) 
+  * Example : ExAverageA := AVERAGEA('Product'[ProductKey])
+
+* X - Aggregate funcation (works similar if single field, much helpful while doing another arithmetic operator inside this)
+
+  * Syntax : [Measure Name] := SumX(refTable, refTable[FieldName] )
+  * Syntax : [Measure Name] := SumX(refTable, refTable[Fiel1] * refTable[Fiel2]  )
+
+  * Example : ExSumX = SumX( SalesDetail, SalesDetail[Quantity] * SalesDetail[Unit Price] ) 
+              The measure is created in [Sales Header] table ref [Sales Details] table,  
+              Here  we need to understand the DAX works based on relationship 
+              which means the measure will return based on [Order Number] field.
+
+  * Applicable for AverageX, CountAX, CountX, MaxX, MinX, SumX, ProductX             
 
