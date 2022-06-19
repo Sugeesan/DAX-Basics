@@ -38,3 +38,15 @@ Sales Details--> Order Number ( details of Sales Relates with ProductKey) --> Qu
 Product     --> ProductKey ( Context to ProdcutCode, ProductName, UnitCost, UnitPrice, Weight)
 Other Tables --> Date and Customer
 
+# DAX
+
+* Excel Funcion - reusable understaing
+
+	SUM, Average, Max, Min, Count can be used as Measure not as New column; 
+	These functions return the value based on dynamic extraction like filters, slicers, ( Rows + Column + Value ) in Table
+	
+	* Syntax :
+	[Measure Name] := Sum(tableName[Field Name])
+	
+	* Example:
+	Exsum = sum(SalesDetail[Quantity]) // can be used in  AVG, Max, Min, Count
