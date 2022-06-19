@@ -84,3 +84,14 @@ Other Tables --> Date and Customer
 
   * Applicable for AverageX, CountAX, CountX, MaxX, MinX, SumX, ProductX             
 
+* Calculated Column - A measure is evaluated in the context of the cell evaluated in a report or in a DAX query, whereas a calculated column is computed at the row level
+
+  * Once measure is created, We cannot use that measure in calculated column.
+  * Instead use the measure while creating calculated column as below:
+    * column = 
+      VAR measure = measure formula
+      RETURN column formula
+
+  * In our example, we can create SalesHeader[Total Amout] = sumx( RELATEDTABLE(SalesDetail), SalesDetail[Quantity] * SalesDetail[Unit Price]) 
+  * And Find the Discount Percentage using existing Discount per bill ; DiscountPct = DIVIDE ( SalesHeader[TotalDiscount] , SalesHeader[Total Amount])
+  * Finally find the discount for each product in [Sales Details] --> Discount = SalesDetail[Quantity] * SalesDetail[Unit Price] * RELATED(SalesHeader[DiscountPct])
