@@ -21,10 +21,10 @@
             DAX Syntax --> Understand the way to frame DAX with standard and readable
 
             Return Type ( Scalar and Table)
-
+            
             Types of functions
              
-            What is expression
+            What is expression - An expression with a scalar result, which will be evaluated for each row of the table in the first argument.
             Filter
             Time Intelligence
 
@@ -49,4 +49,18 @@ Other Tables --> Date and Customer
 	[Measure Name] := Sum(tableName[Field Name])
 	
 	* Example:
-	Exsum = sum(SalesDetail[Quantity]) // can be used in  AVG, Max, Min, Count
+	Exsum = sum(SalesDetail[Quantity]) // also be used in  AVG, Max, Min, Count
+
+* A - Aggregate Function 
+    works in AverageA, CountA, MaxA, MinA
+    
+    handles non-numeric data types according to the following rules:
+
+    1. It support Logical values; Logical value TRUE count as 1 &  FALSE count as 0 (zero).
+    2. Values that contain non-numeric text count as 0 (zero).
+    3. Empty text (“”) counts as 0 (zero).
+
+  * Syntax : [Measure Name] := AverageX(TableName[Field Name])
+
+  * Example : ExAverageA = AVERAGEA('Product'[ProductKey]) 
+
