@@ -1,14 +1,14 @@
 # pre requisite KB - As you aware 
 
-  Data Modelling Concepts like 
+  * Data Modelling Concepts like 
              Contextual Data based on Key field, 
              Header table , 
              Detail table, 
              Relationship ( 1:1 , 1:*, *:*)
 
-  ELT -- Extraction, Loading then Transformation ( using M-Code and DAX)
+  * ELT -- Extraction, Loading then Transformation ( using M-Code and DAX)
   
-  SSAS/DW Concepts :
+  * SSAS/DW Concepts :
            Dimension Table,
            Fact Table,
            Measure
@@ -16,7 +16,7 @@
            Types of Measures ( Full Addititve, Semi Additive and Non Addititve)   
            Types of Dimension( Confirmed, Role playing, SCD (I,II,III), Junk, Infred....) 
    
-   DAX Concepts:
+   * DAX Concepts:
 
             DAX Syntax --> Understand the way to frame DAX with standard and readable
 
@@ -30,7 +30,7 @@
 
    
 # Data Modelling for Sales Example
-Understand Power BI Data Model 1:* along with DAX Basics
+ * Understand Power BI Data Model 1:* along with DAX Basics
 
 Sales Header --> Order Number ( summary of Sales Relates with CustomerKey, OrderDateKsy , CurrencyKey )
 Sales Details--> Order Number ( details of Sales Relates with ProductKey) --> Quanitity {Sold}
