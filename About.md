@@ -18,7 +18,7 @@
    
    * DAX Concepts:
 
-            DAX Syntax --> Understand the way to frame DAX with standard and readable
+            DAX Syntax --> Functional Language; Understand the way to frame DAX with standard and readable
 
             Return Type ( Scalar and Table)
 
